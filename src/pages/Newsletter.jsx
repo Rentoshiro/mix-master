@@ -1,4 +1,4 @@
-import { Form, redirect, useNavigation } from "react-router-dom";
+import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -7,7 +7,6 @@ const newsletterUrl = "https://www.course-api.com/cocktails-newsletter";
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-
   try {
     const response = await axios.post(newsletterUrl, data);
     toast.success(response.data.msg);
